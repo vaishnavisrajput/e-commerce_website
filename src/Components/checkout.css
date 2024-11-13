@@ -1,0 +1,41 @@
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+}
+.checkout{
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+.items{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.items p{
+    margin-top: 5px;
+}
+.my-cart h1 {
+    text-align: center;
+    font-size: 40px;
+    letter-spacing: 2px;
+    font-style: oblique;
+    margin: 10px;
+}
+.inc-dec{
+    margin-top: 10px;
+}.inc-dec button{
+    background-color: black;
+    color: #ffff;
+    outline: 0;
+    border: 0;
+    padding: 5px 10px;
+    margin:0px 10px;
+    border-radius: 8px;
+}

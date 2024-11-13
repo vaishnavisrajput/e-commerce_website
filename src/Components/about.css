@@ -1,0 +1,128 @@
+
+/* ABOUT US */
+.about-us{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(253, 244, 233, 0.979);
+}
+.about-container{
+    text-align: center;
+    width: 70%;    
+    font-size: 20px;
+    padding: 10px 10px
+}
+.about-container h1{
+    font-size: 42px;
+    font-style: oblique;
+}
+.about-para h4{
+    font-size: 20px;
+    font-weight: 800;
+    font-style: italic;
+    margin-top: 25px;
+}
+.about-para img{
+    width: 800px;
+    margin-top: 50px;
+    height: 70vh;
+    border-radius: 10px;
+}
+.about-para p{
+    font-size: 17px;
+    margin-top: 40px;
+}
+/* UPDATES */
+.new-update{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(253, 244, 233, 0.979);
+    padding-bottom: 50px;
+}
+.new-update h4{
+    font-size: 25px;
+    letter-spacing: 1px;
+    margin-top: 50px;
+}
+.updates{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    gap: 100px;
+    margin-left: 0px;
+}
+.update-cont{
+    width: 250px;
+}
+.update-cont h5, h3{
+font-size: 20px;
+}
+.update-cont p{
+    font-size: 17px;
+    width: 250px;
+}
+.update-cont h6{
+    font-size: 16px;
+}
+/* Footer */
+
+.footer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+    gap: 1rem;
+    padding: 40px 150px;
+    background-color: #cab186;
+    /* background-color: rgba(209, 180, 144, 0.979); */
+    color:#6b5b4b;
+    line-height: 1.5;
+    
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all .40s ;
+}
+.end-text{
+    text-align: center;
+    padding: 20px;
+    color: #434242;
+}
+.first-info h1{
+    color: brown;
+    font-size: 30px;
+}
+
+/* CLIENT */
+
+.client{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: #d8c3a0e5;
+    /* background-color: rgb(245, 245, 207); */
+    height: 50vh;
+    padding: 25px 0px;
+}
+.client h4{
+    font-size: 25px;
+}
+.client img{
+    width: 150px;
+    height: 28vh;
+    border-radius: 100%;
+}
+
+.client h5{
+    width: 850px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-top: 10px;
+}
+.client p{
+    font-weight: 600;
+    
+}

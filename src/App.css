@@ -1,0 +1,158 @@
+*{
+    margin: 0;
+}
+#root{
+    background-color: beige;
+}
+
+.header{
+    text-align: center;
+    font-size: 25px;
+    position: relative;
+    
+}
+.title{
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    z-index: 1000; 
+    top: 0;
+    padding: 40px 30px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color:  rgb(173, 173, 146);
+}
+.nav-btn{
+    outline: 0;
+    border: 0;
+    background-color: #ffff;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    background-color:  rgb(173, 173, 146);
+    transition: 2ms ease-in-out;
+    
+}
+.nav-btn:hover{
+    font-size: 19px;
+    font-weight: 900;
+    border-bottom: 1px solid #000;
+    
+}
+
+.nav{
+    display: flex;
+    gap: 40px;
+    align-items: baseline;
+}
+.cart{
+    font-size: 25px;
+    border: 0;
+    outline: 0;
+    background-color: #ffff;
+    color: black;
+    background-color:  rgb(173, 173, 146);
+    transition: 2ms ease-in-out;
+}
+.cart:hover{
+    font-size: 27px;
+    font-weight: 900;
+}
+/* HOME */
+
+.list{
+    background-color: rgb(173, 173, 146);
+    width: 150px;
+    height: 60vh;
+    padding: 40px;
+    font-size: 20px;
+    list-style: none;
+    border-radius: 10px;
+
+    font-weight: 600
+}
+.category-list{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+
+}
+.category-list li{
+    width: 200px;
+    font-size: 20px;
+    margin-left: 20px;
+}
+.clear{
+    margin-top: 50px;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.home{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    gap: 60px;
+}
+/* PRODUCTS */
+.products{
+    text-align: center;
+}
+
+.card{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 80px;
+    padding: 50px 50px;
+    text-align: center;
+}
+/* .product-list title{
+    width: 200px;
+} */
+.product-list img{
+    width: 220px;
+    height: 35vh;
+    border-radius: 10px;
+}
+.product-list h3{
+    /* width: 200px; */
+    /* height: 10vh; */
+    overflow: hidden;
+}
+.product-list{
+    width: 250px;
+    background-color: rgb(173, 173, 146);
+    padding: 10px 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.product-list p{
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.all-products h1{
+    font-size: 35px;
+    font-style: oblique;
+}
+.view-btn{
+    margin-top: 8px;
+    outline: 0;
+    border: 0;
+    padding: 8px 13px;
+    border-radius: 10px;
+    font-size: 13px;
+    background-color: black;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-family: cursive;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
