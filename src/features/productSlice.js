@@ -6,7 +6,7 @@ const initialState = {
     cartProducts: [], 
     productCategory:[],
     productDetail: [],
-    confirmProducts: []
+    // confirmProducts: []
 }
 const productSlice = createSlice({
     name: 'products',
@@ -41,12 +41,12 @@ const productSlice = createSlice({
         viewProduct: (state, action) => {
            
             state.productDetail = action.payload
-        },
-        confirmOrder: (state, action) => {
-            state.confirmProducts = action.payload
         }
+        // confirmOrder: (state, action) => {
+        //     state.confirmProducts = action.payload
+        // }
     }
 })
 
-export const { setProduct, setCategory, addCartProduct, removeCartProduct, viewProduct, confirmOrder } = productSlice.actions
+export const { setProduct, setCategory, addCartProduct, removeCartProduct, viewProduct } = productSlice.actions
 export default productSlice.reducer;

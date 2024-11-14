@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import './orderconfirm.css'
 function OrderConfirmPage() {
   
-  const cartProduct = useSelector((state) => state.products.confirmProducts)
+  const cartProduct = useSelector((state) => state.products.cartProducts)
   console.log(cartProduct)
   
 

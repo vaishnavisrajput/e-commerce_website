@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import './checkout.css'
 import { Link } from 'react-router-dom'
 import {removeCartProduct} from '../features/productSlice'
-import { confirmOrder } from '../features/productSlice'
+
 function CheckoutPage() {
   const dispatch = useDispatch()
   const product = useSelector((state) => state.products.cartProducts)
@@ -77,7 +77,7 @@ function CheckoutPage() {
 
             })}
               <div className="buy-now">
-          <Link to='/orderconfirmation' onClick={() => dispatch(confirmOrder(prod))} className='buy-now-btn'>Buy Now!</Link>
+          <Link to='/orderconfirmation'  className='buy-now-btn'>Buy Now!</Link>
           </div>
           </div>
           )}
