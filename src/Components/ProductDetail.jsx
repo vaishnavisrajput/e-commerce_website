@@ -29,7 +29,7 @@ function ProductDetail() {
         <p>Price: ${product?.price}</p>
         {/* <p>Rating: {product?.rating.rate}</p> */}
         <div className="buttons">
-        <input onChange={(e) => setQuantity(e.target.value)} type="number" value={quantity} name="quantity" min={0} max={10} />
+        <input onChange={(e) => setQuantity(e.target.value)} type="number" value={quantity} name="quantity" min={1} max={10} />
         <button className='add-to-cart' onClick={() => addToCart(product)}>Add to Cart</button>
         </div>
         

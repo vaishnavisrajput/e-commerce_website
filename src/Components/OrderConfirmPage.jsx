@@ -3,11 +3,18 @@ import { useSelector } from 'react-redux'
 import './orderconfirm.css'
 function OrderConfirmPage() {
   
-  const cartProduct = useSelector((state) => state.products.cartProducts)
+  const cartProduct = useSelector((state) => state.products.confirmProducts)
   console.log(cartProduct)
   
 
  
+  // const total = cartProduct.reduce((acc, curr)=>
+  // {
+   
+  //     return acc + (curr.quantity * curr.price)
+   
+    
+  // }, 0);
   const total = cartProduct.reduce((acc, curr)=>
   {
     if(curr.quantity > 0){

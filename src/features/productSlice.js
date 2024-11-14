@@ -5,7 +5,8 @@ const initialState = {
     filteredProducts: [],
     cartProducts: [], 
     productCategory:[],
-    productDetail: []
+    productDetail: [],
+    confirmProducts: []
 }
 const productSlice = createSlice({
     name: 'products',
@@ -38,11 +39,14 @@ const productSlice = createSlice({
             state.cartProducts = state.cartProducts.filter((item) => item.id!==action.payload)
         },
         viewProduct: (state, action) => {
-            console.log(action.payload)
+           
             state.productDetail = action.payload
+        },
+        confirmOrder: (state, action) => {
+            state.confirmProducts = action.payload
         }
     }
 })
 
-export const { setProduct, setCategory, addCartProduct, removeCartProduct, viewProduct } = productSlice.actions
+export const { setProduct, setCategory, addCartProduct, removeCartProduct, viewProduct, confirmOrder } = productSlice.actions
 export default productSlice.reducer;
