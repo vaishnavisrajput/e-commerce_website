@@ -5,7 +5,7 @@ import { addCartProduct } from '../features/productSlice';
 import './productDetail.css'
 
 function ProductDetail() {
-  const[quantity, setQuantity] = useState(0)
+  const[quantity, setQuantity] = useState(1)
   const product = useSelector((state) => state.products.productDetail)
   const dispatch = useDispatch()
 
