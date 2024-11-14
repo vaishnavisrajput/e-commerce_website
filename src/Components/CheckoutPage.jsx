@@ -6,6 +6,7 @@ import {removeCartProduct} from '../features/productSlice'
 function CheckoutPage() {
   const dispatch = useDispatch()
   const product = useSelector((state) => state.products.cartProducts)
+
   const[checkoutQuantity, setCheckoutQuantity] = useState(0)
   const[flag, setFlag] = useState(false)
   console.log(product, "cart")
@@ -30,7 +31,13 @@ function CheckoutPage() {
       <div className="checkout-cont">
         <div className='my-cart'>
           <h1>My Cart</h1>
-          <div className="checkout-items">
+          {product.length === 0 ? (
+            <div className="empty-cart">
+              <p>Your cart is empty.</p>
+            </div>
+            
+          ) : (
+            <div className="checkout-items">
             {product.map((prod, index) => {
               return (
                 <div className='checkout'>
@@ -58,7 +65,7 @@ function CheckoutPage() {
                       </div>
                     )}
                     <button className='add-to-cart' onClick={() => dispatch(removeCartProduct(prod.id))}>Remove Item</button>
-                    <Link to='/orderconfirmation' className='add-to-cart'>Buy Now!</Link>
+                    
                   </div>
                   </div>
 
@@ -68,8 +75,14 @@ function CheckoutPage() {
               )
 
             })}
-
+              <div className="buy-now">
+          <Link to='/orderconfirmation' className='buy-now-btn'>Buy Now!</Link>
           </div>
+          </div>
+          )}
+          
+          
+          
         </div>
       </div>
     </>

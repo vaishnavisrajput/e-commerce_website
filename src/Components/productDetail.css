@@ -17,10 +17,11 @@
     padding: 10px 5px;
     border-radius: 10px;
     cursor: pointer;
+    text-align: center;
 }
 .view-product img{
     width: 235px;
-    height: 40vh;
+    height: 45vh;
     border-radius: 10px;
     margin-top: 15px;
 }
@@ -44,6 +45,13 @@
     cursor: pointer;
     text-decoration: none;
 }
+/* HOVER EFFECT IN ADD TO CART BUTTON */
+.add-to-cart:hover{
+    background-color: #ffff;
+    color: #000;
+    transition: 0.5s ease-in-out;
+    border: 1px solid black;
+}
 .item-details{
     display: flex;
     flex-direction: column;
@@ -64,4 +72,5 @@
     border: 1px solid black;
     border-radius: 10px;
     margin-left: 8px;
+
 }

@@ -1,25 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import './orderconfirm.css'
 function OrderConfirmPage() {
-  const [totalAmt, setTotalAmt] = useState(0);
+  
   const cartProduct = useSelector((state) => state.products.cartProducts)
   console.log(cartProduct)
   
 
-  const totalAmount = (cartProduct) => {
-    cartProduct?.map((items, index) => {
-     
-        let [quantity, price] = items
-      setTotalAmt(quantity * price)
-     
-    })
-  }
-  console.log(totalAmt, 'total')
+ 
+  const total = cartProduct.reduce((acc, curr)=>
+  {
+    if(curr.quantity > 0){
+      return acc + (curr.quantity * curr.price)
+    }
+    else{
+      return curr.price;
+    }
+    
+  }, 0);
 
-  useEffect(() => {
-    totalAmount();
-  }, [])
   
   return (
     <>
@@ -46,7 +45,7 @@ function OrderConfirmPage() {
           })}
         </div>
         <div className="total-amt">
-          <h4>Total:</h4>
+          <h4>Total: ${total}</h4>
         </div>
       </div>
     </>

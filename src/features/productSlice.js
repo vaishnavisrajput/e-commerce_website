@@ -17,8 +17,21 @@ const productSlice = createSlice({
         setCategory: (state, action) => {
             state.productCategory = action.payload
         },
+        // addCartProduct: (state, action) => {
+        //     if(state.cartProducts.id === action.payload.id){
+        //         return state.cartProducts
+        //     }
+        //     else{
+        //         state.cartProducts = [...state.cartProducts, action.payload]
+
+        //     }
         addCartProduct: (state, action) => {
-            state.cartProducts = [...state.cartProducts, action.payload]
+            const isExist = state.cartProducts.find(product => product.id === action.payload.id);
+            if(!isExist){
+                state.cartProducts.push(action.payload);
+                return;
+            }
+        
         },
         removeCartProduct: (state, action) => {
             console.log(action.payload, 'action')
