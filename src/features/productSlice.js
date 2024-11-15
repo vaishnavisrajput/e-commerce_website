@@ -1,11 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { fetchCategory, fetchProducts,fetchFilteredProducts } from "./productApi";
+
+export const productAsync = createAsyncThunk(
+    'products/fetchProducts',
+    async () => {
+        const response = await fetchProducts()
+        return response.data;
+        
+    }
+)
+
+export const categoryAsync = createAsyncThunk(
+    'category/fetchCategory',
+     async () => {
+        const response = await fetchCategory()
+        return response.data;
+     }
+)
+
+export const filteredAsync = createAsyncThunk(
+    'filtered/fetchFilteredProducts',
+     async (category) => {
+        const response = await fetchFilteredProducts(category)
+        return response.data;
+     }
+)
 
 const initialState = {
-    products: [],
-    filteredProducts: [],
-    cartProducts: [], 
-    productCategory:[],
-    productDetail: [],
+    products: [], //to set the products
+    filteredProducts: [], //to set the filter products
+    cartProducts: [], //to set the cart products
+    productCategory:[], //to set the category
+    productDetail: [], //to set the product detail page 
     // confirmProducts: []
 }
 const productSlice = createSlice({
@@ -18,14 +44,6 @@ const productSlice = createSlice({
         setCategory: (state, action) => {
             state.productCategory = action.payload
         },
-        // addCartProduct: (state, action) => {
-        //     if(state.cartProducts.id === action.payload.id){
-        //         return state.cartProducts
-        //     }
-        //     else{
-        //         state.cartProducts = [...state.cartProducts, action.payload]
-
-        //     }
         addCartProduct: (state, action) => {
             const isExist = state.cartProducts.find(product => product.id === action.payload.id);
             if(!isExist){
@@ -39,14 +57,54 @@ const productSlice = createSlice({
             state.cartProducts = state.cartProducts.filter((item) => item.id!==action.payload)
         },
         viewProduct: (state, action) => {
-           
             state.productDetail = action.payload
+        },
+        confirmOrders: (state, action) => {
+            state.cartProducts = action.payload;
         }
-        // confirmOrder: (state, action) => {
-        //     state.confirmProducts = action.payload
-        // }
+    },
+    extraReducers: (builder) => {
+        builder
+        // FOR PRODUCTS
+        .addCase(productAsync.pending, (state) => {
+            state.status = 'loading';
+        })
+        .addCase(productAsync.fulfilled, (state, action) => {
+            state.status = 'idle';
+            state.products = action.payload;
+        })
+        .addCase(productAsync.rejected, (state, action) => {
+            state.status = 'failed';
+            state.error = action.error.message;
+        });
+        // FOR CATEGORY
+        builder
+        .addCase(categoryAsync.pending, (state) => {
+            state.status = 'loading';
+        })
+        .addCase(categoryAsync.fulfilled, (state, action) => {
+            state.status = 'idle';
+            state.productCategory = action.payload;
+        })
+        .addCase(categoryAsync.rejected, (state, action) => {
+            state.status = 'failed';
+            state.error = action.error.message;
+        });
+        // FOR FILTERED PRODUCTS
+        builder
+        .addCase(filteredAsync.pending, (state) => {
+            state.status = 'loading';
+        })
+        .addCase(filteredAsync.fulfilled, (state, action) => {
+            state.status = 'idle';
+            state.filteredProducts = action.payload;
+        })
+        .addCase(filteredAsync.rejected, (state, action) => {
+            state.status = 'failed';
+            state.error = action.error.message;
+        });
     }
 })
 
-export const { setProduct, setCategory, addCartProduct, removeCartProduct, viewProduct } = productSlice.actions
+export const { setProduct, setCategory, addCartProduct, removeCartProduct, viewProduct, confirmOrders } = productSlice.actions
 export default productSlice.reducer;
