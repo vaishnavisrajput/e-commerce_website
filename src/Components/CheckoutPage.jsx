@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './checkout.css'
-import { Link } from 'react-router-dom'
-import { removeCartProduct, setProduct, addCartProduct, confirmOrders } from '../features/productSlice'
+import { useNavigate } from 'react-router-dom'
+import { removeCartProduct, setProduct, addCartProduct, confirmOrders, emptyCart } from '../features/productSlice'
 
 function CheckoutPage() {
   const dispatch = useDispatch()
   const product = useSelector((state) => state.products.cartProducts)
-  
+  const navigate = useNavigate()
   console.log(product, "cart")
 
 
@@ -15,7 +15,7 @@ function CheckoutPage() {
 
     const updatedProducts =
       product.map((prod) => {
-        if (prod.id === id ) {
+        if (prod.id === id) {
           return { ...prod, quantity: parseInt(prod.quantity) + 1 }
         }
         else {
@@ -23,7 +23,7 @@ function CheckoutPage() {
         }
       })
     dispatch(confirmOrders(updatedProducts))
-    
+
 
   }
 
@@ -31,7 +31,7 @@ function CheckoutPage() {
 
     const updatedProducts =
       product.map((prod) => {
-        if (prod.id === id) {
+        if (prod.id === id && prod.quantity > 0) {
           return { ...prod, quantity: parseInt(prod.quantity) - 1 }
         }
         else {
@@ -39,15 +39,23 @@ function CheckoutPage() {
         }
       })
     dispatch(confirmOrders(updatedProducts))
-    
+
   }
- 
-  const handleBuyNow = (quantity) => {
-    if(quantity ===  0){
-      alert("Please add some quantity")
-    }
+
+
+  const handleBuyNow = () => {
+    product?.map((prod) => {
+      if (prod.quantity === 0) {
+        return alert("Please add quantity")
+      }
+      else {
+        alert("Woahh! Your order has been placed")
+        navigate('/orderconfirmation')
+
+
+      }
+    })
   }
-  console.log(product, "updtaes")
 
 
   return (
@@ -73,16 +81,15 @@ function CheckoutPage() {
                       <h3>{prod?.title}</h3>
 
                       <p>Price: ${prod?.price}</p>
-                      {/* <p>Rating: {prod?.rating.rate}</p> */}
                       <div className="buttons">
 
-                        
-                          <div className='inc-dec'>
-                            <button onClick={() => handleDecrement(prod.id)}>-</button>
-                            <span>{prod.quantity}</span>
-                            <button onClick={() => handleIncrement(prod.id)}>+</button>
-                          </div>
-                       
+
+                        <div className='inc-dec'>
+                          <button onClick={() => handleDecrement(prod.id)}>-</button>
+                          <span>{prod.quantity}</span>
+                          <button onClick={() => handleIncrement(prod.id)}>+</button>
+                        </div>
+
                         <button className='add-to-cart' onClick={() => dispatch(removeCartProduct(prod.id))}>Remove Item</button>
 
                       </div>
@@ -94,9 +101,15 @@ function CheckoutPage() {
                 )
 
               })}
-              <div className="buy-now">
-                <Link to='/orderconfirmation' className='buy-now-btn' onClick={() => handleBuyNow(quantity)} >Buy Now!</Link>
-              </div>
+
+              {product.length > 0 &&
+
+                <div className="buy-now">
+                  <button to='/orderconfirmation' className='buy-now-btn' onClick={handleBuyNow} >Buy Now!</button>
+                </div>
+              }
+
+
             </div>
           )}
 

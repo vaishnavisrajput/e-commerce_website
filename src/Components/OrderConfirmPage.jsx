@@ -1,20 +1,13 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import './orderconfirm.css'
+import { emptyCart } from '../features/productSlice'
 function OrderConfirmPage() {
-  
+  const dispatch = useDispatch()
   const cartProduct = useSelector((state) => state.products.cartProducts)
   console.log(cartProduct)
   
-
- 
-  // const total = cartProduct.reduce((acc, curr)=>
-  // {
-   
-  //     return acc + (curr.quantity * curr.price)
-   
-    
-  // }, 0);
   const total = cartProduct.reduce((acc, curr)=>
   {
     if(curr.quantity > 0){
@@ -53,6 +46,10 @@ function OrderConfirmPage() {
         </div>
         <div className="total-amt">
           <h4>Total: ${total}</h4>
+        </div>
+        <div className="return">
+        <Link className="return-btn" to='/' onClick={() => dispatch(emptyCart())}>Return to Homepage</Link>
+
         </div>
       </div>
     </>

@@ -4,8 +4,8 @@ import { useNavigate} from 'react-router-dom'
 import { productAsync, categoryAsync, filteredAsync } from '../features/productSlice'
 import { viewProduct, setCategory, setProduct } from '../features/productSlice'
 function Home() {
-    const [selectedCategory, setSelectedCategory] = useState(null)
-    const [flag, setFlag] = useState(false)
+    const [selectedCategory, setSelectedCategory] = useState(null) //to clear the filter
+    const [flag, setFlag] = useState(false) //switching between all products and filtered products
 
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -30,7 +30,7 @@ function Home() {
     }
 
     const handleClearFilter = () => {
-        // Clear the filter and show the list of all products
+        // Clearing the filter and show the list of all products
         setFlag(false);
         setSelectedCategory(null)
         dispatch(productAsync()); 
