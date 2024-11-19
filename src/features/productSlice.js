@@ -37,12 +37,6 @@ const productSlice = createSlice({
     name: 'products',
     initialState,
     reducers: {
-        setProduct: (state, action) => {
-            state.products = [...action.payload]
-        },
-        setCategory: (state, action) => {
-            state.productCategory = action.payload
-        },
         addCartProduct: (state, action) => {
             const isExist = state.cartProducts.find(product => product.id === action.payload.id);
             if (!isExist) {
@@ -52,7 +46,6 @@ const productSlice = createSlice({
 
         },
         removeCartProduct: (state, action) => {
-            console.log(action.payload, 'action')
             state.cartProducts = state.cartProducts.filter((item) => item.id !== action.payload)
         },
         viewProduct: (state, action) => {
@@ -61,7 +54,7 @@ const productSlice = createSlice({
         confirmOrders: (state, action) => {
             state.cartProducts = action.payload;
         },
-        emptyCart: (state, action) => {
+        emptyCart: (state) => {
             state.cartProducts = []
         }
     },

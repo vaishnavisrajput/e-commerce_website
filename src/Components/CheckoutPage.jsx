@@ -70,7 +70,7 @@ function CheckoutPage() {
 
           ) : (
             <div className="checkout-items">
-              {product.map((prod, index) => {
+              {product?.map((prod, index) => {
                 return (
                   <div className='checkout'
                     key={index}>

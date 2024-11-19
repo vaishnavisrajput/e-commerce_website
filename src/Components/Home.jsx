@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate} from 'react-router-dom'
 import { productAsync, categoryAsync, filteredAsync } from '../features/productSlice'
-import { viewProduct, setCategory, setProduct } from '../features/productSlice'
+import { viewProduct} from '../features/productSlice'
 function Home() {
     const [selectedCategory, setSelectedCategory] = useState(null) //to clear the filter
     const [flag, setFlag] = useState(false) //switching between all products and filtered products
@@ -16,7 +16,7 @@ function Home() {
         dispatch(categoryAsync())
         dispatch(productAsync())
     }, [])
-    
+     
 
     const handleCategoryChange = (category) => {
         dispatch(filteredAsync(category))
